@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Estilos base */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5ccb1;
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+.heading {
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.025em;
+}
+
+/* Botões */
+.btn-prime {
+    @apply bg-prime-gold text-white px-4 py-2 rounded-lg hover:bg-prime-brown transition-all duration-300 font-display font-medium tracking-wide transform hover:scale-105;
+}
+
+/* Cards */
+.prime-card {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105;
+}
+
+/* Animações */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Elementos de navegação */
+.nav-link {
+    @apply text-white hover:text-prime-gold transition-colors duration-300 font-display text-lg tracking-wide;
+}
+
+/* Inputs personalizados */
+.prime-input {
+    @apply border-2 border-prime-gray rounded-lg px-4 py-2 focus:border-prime-gold focus:ring-1 focus:ring-prime-gold outline-none transition-all duration-300;
+}
+
+/* Cards de produto */
+.product-card {
+    @apply bg-white rounded-lg shadow-lg p-4 transform transition-all duration-300 hover:shadow-xl hover:scale-105;
+}
+
+/* Badges de preço */
+.price-badge {
+    @apply bg-prime-gold text-white font-display px-3 py-1 rounded-full text-lg absolute top-4 right-4;
+}

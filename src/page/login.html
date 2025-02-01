@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="shortcut icon" href="/src/img/Icones/comida-rapida.png">
+
+    <!-- META TAG OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prime Burgeria" />
+    <meta property="og:image" content="https://primeburgeria.netlify.app/src/img/Logo.webp" />
+    <meta property="og:description" content="O melhor Hambúrguer da região!" />
+    <meta property="og:site_name" content="PrimeBurgeria" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BGCT0DLS42"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BGCT0DLS42');
+    </script>
+</head>
+
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'nav': '#343734',
+                    'fundo': '#FFF5EB',
+                    'prime-brown': '#333333',
+                    'prime-gold': '#FFBB55',
+                    'prime-cinza': '#EFC17F', <!--testando a cor-->
+                    'prime-hover': '#F76D5E',
+                    'prime-price': '#00A676',
+                    'prime-border': '#EDEDED'
+
+                },
+                backgroundImage: {
+                    home: "url('../src/img/fundo.png')",
+                    login: "url('/src/img/fundo-login.jpg')",
+                }
+
+            }
+        }
+    }
+</script>
+
+<title>PrimeBurgeria</title>
+</head>
+
+<body class="bg-fundo flex flex-col min-h-screen  bg-cover bg-center bg-no-repeat">
+    <header class="bg-nav h-19 fixed z-50 w-full top-0 left-0">
+        <nav class="flex items-center justify-between w-[92%] mx-auto">
+            <div class="flex items-center gap-2">
+                <a onclick="onToggleMenu(this)" name="menu" class="h-6 w-6 cursor-pointer md:hidden"><img
+                        src="/src/img/Icones/icons8-cardápio-50.png" alt=""></a>
+                <a href="/index.html" class="logo-link transition-opacity duration-300">
+                    <img class="w-12 mx-auto cursor-pointer rounded-full mt-1 mb-1" src="/src/img/Logo.webp"
+                        alt="Prime Burgeria Logo">
+                </a>
+            </div>
+
+            <div
+                class="nav-links bg-nav md:static fixed md:min-h-fit min-h-screen left-[-100%] top-0 w-[70%] md:w-auto flex items-center px-5 transition-all duration-300 ease-in-out md:translate-x-0 shadow-2xl md:shadow-none">
+                <!-- Cabeçalho do menu mobile com logo e botão fechar -->
+                <div class="absolute top-4 left-4 right-4 flex justify-between items-center md:hidden">
+                    <img class="w-12 rounded-full" src="/src/img/Logo.webp" alt="Prime Burgeria Logo">
+                    <a onclick="onToggleMenu(this)" name="close" class="h-6 w-6 cursor-pointer text-white"><img
+                            src="/src/img/Icones/icons8-x-50.png" alt=""></a>
+                </div>
+
+                <div class="flex flex-col w-full">
+                    <ul class="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-4 w-full md:mt-0 mt-16">
+                        <li>
+                            <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
+                                href="/index.html">
+                                <img src="https://img.icons8.com/material-outlined/24/home--v2.png" alt="Home"
+                                    class="w-6 h-6 ">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
+                                href="/src/page/menu.html">
+                                <img src="/src/img/Icones/icons8-menu-de-restaurante-50.png" alt="Menu" class="w-6 h-6">
+                                Menu
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <!-- Login e Carrinho (visíveis apenas em mobile) -->
+                    <div class="flex flex-col gap-4 mt-8 md:hidden">
+                        <a href="/src/page/login.html" class="flex items-center gap-2 text-white">
+                            <img src="/src/img/Icones/icons8-pessoa-24.png" alt="login" class="w-6 h-6">
+                            <span class="text-xl">Login</span>
+                        </a>
+
+                        <button class="flex items-center gap-2 text-white" id="cart-btn-mobile">
+                            <img src="/src/img/Icones/carrinho.png" class="w-8 h-8" alt="carrinho">
+                            <span class="text-xl">Carrinho</span>
+                            <span id="cart-count-mobile" class=" px-2 py-1 rounded-full text-sm">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOGIN e CARRINHO (visíveis apenas em desktop) -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="/src/page/login.html">
+                    <button class="flex items-end gap-2 text-black font-bold">
+                        <img src="/src/img/Icones/icons8-pessoa-24.png" alt="login">
+                    </button>
+                </a>
+                <button class="flex items-center gap-2 text-black font-bold" id="cart-btn">
+                    <span id="cart-count">0</span>
+                    <img src="/src/img/Icones/carrinho.png" class="w-10 h-10" alt="carrinho">
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow pt-24">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            <article class="flex items-center">
+                <img class="rounded-md hover:scale-110 hover:-rotate-2 duration-300" src="/src/img/Pag-login.png"
+                    alt="banner">
+            </article>
+
+            <article class=" w-full max-w-md mx-auto">
+                <div class="bg-white shadow-2xl rounded-lg  p-8">
+                    <!-- Botões de alternância -->
+                    <div class="flex justify-center mb-8">
+                        <div class="relative">
+                            <button class="px-6 py-2 font-bold" onclick="Entrar()">Entrar</button>
+                            <button class="px-6 py-2 font-bold" onclick="Cadastro()">Cadastro</button>
+                            <hr id="Indicador"
+                                class="absolute bottom-0 w-24 h-[3px] bg-prime-gold transition-transform duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Container dos formulários -->
+                    <div class="relative h-[300px] overflow-hidden">
+                        <!-- Formulário de Login -->
+                        <form class="absolute w-full transition-transform duration-300" method="post" id="EntrarPainel">
+                            <div class="space-y-4">
+                                <input
+                                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold"
+                                    type="email" name="email" placeholder="Email de acesso" required>
+                                <input
+                                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold"
+                                    type="password" name="senha" placeholder="Digite sua senha" required minlength="6">
+                                <button type="submit"
+                                    class="w-full py-3 bg-prime-gold text-white rounded hover:bg-prime-gold1 transition-colors">
+                                    Entrar
+                                </button>
+                                <div class="text-center">
+                                    <a href="#" class="text-sm text-prime-gold hover:underline">
+                                        Esqueceu sua senha?
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Formulário de Cadastro -->
+                        <form class="absolute w-full translate-x-full transition-transform duration-300" method="post"
+                            id="CadastroSite">
+                            <div class="space-y-4">
+                                <input
+                                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold"
+                                    type="text" name="nome" placeholder="Nome completo" required>
+                                <input
+                                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold"
+                                    type="email" name="email" placeholder="Email de acesso" required>
+                                <input
+                                    class="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-prime-gold focus:ring-1 focus:ring-prime-gold"
+                                    type="password" name="senha" placeholder="Digite sua senha" required minlength="6">
+                                <button type="submit"
+                                    class="w-full py-3 bg-prime-gold text-white rounded hover:bg-prime-gold1 transition-colors">
+                                    Cadastre-se
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!--MODAL CART-->
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-50 items-center justify-center hidden" id="cart-modal">
+        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px] max-h-[90vh] overflow-y-auto">
+            <h2 class="text-center font-bold text-2x1 mb-2">Meu carrinho</h2>
+
+            <div class="mt-4">
+                <label class="flex items-center">
+                    <input type="checkbox" id="pickup-option" class="mr-2">
+                    <span>Retirar no Local</span>
+                </label>
+            </div>
+
+            <div class="flex justify-between mb-2 flex-col" id="cart-items"></div>
+            <p class="font-bold mt-2"><span id="cart-total"></span></p>
+
+
+            <p class="font-bold mt-4">Endereço de entrega</p>
+            <input type="text" placeholder="Digite seu endereço completo..." id="address"
+                class="w-full border-1 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="close-modal-btn">Fechar</button>
+                <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="w-full bg-nav py-2 mt-auto">
+        <p class="flex justify-center text-center font-semibold flex-wrap text-white">
+            Copyright &copy; Todos os Direitos Reservados | Desenvolvido por:
+            <span class="ml-1">
+                <a href="https://wa.me/5561981500971" target="_blank" class="text-white no-underline cursor-pointer">
+                    Dev Natanael
+                </a>
+            </span>
+        </p>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/src/js/script.js"></script>
+</body>
+
+</html>

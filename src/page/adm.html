@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="shortcut icon" href="/src/img/Icones/comida-rapida.png"> <!--aparece o simbolo da hamburgeria-->
+
+    <!-- META TAG OG -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prime Burgeria" />
+    <meta property="og:image" content="https://primeburgeria.netlify.app/src/img/Logo.webp" />
+    <meta property="og:description" content="O melhor Hambúrguer da região!" />
+    <meta property="og:site_name" content="PrimeBurgeria" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BGCT0DLS42"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BGCT0DLS42');
+    </script>
+
+
+
+
+    <title>PrimeBurgeria</title>
+</head>
+
+
+
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'nav': '#343734',
+                    'fundo': '#FFF5EB',
+                    'prime-brown': '#333333',
+                    'prime-gold': '#FFBB55',
+                    'prime-cinza': '#EFC17F', <!--testando a cor-->
+                    'prime-hover': '#F76D5E',
+                    'prime-price': '#00A676',
+                    'prime-border': '#EDEDED'
+
+                },
+                backgroundImage: {
+                    home: "url('../src/img/fundo.png')",
+                }
+
+            }
+        }
+    }
+</script>
+
+
+<body class="bg-fundo min-h-screen">
+    <!-- Header simplificado para área admin -->
+    <header class="bg-nav h-19 fixed z-50 w-full top-0 left-0">
+        <nav class="flex items-center justify-between w-[92%] mx-auto">
+            <div class="flex items-center gap-2">
+                <a href="/src/page/login.htm" class="logo-link transition-opacity duration-300">
+                    <img class="w-12 mx-auto cursor-pointer rounded-full mt-1 mb-1" src="../img/Logo.webp"
+                        alt="Prime Burgeria Logo">
+                </a>
+                <span class="text-white text-xl">Painel Administrativo</span>
+            </div>
+            <a href="/src/page/login.html">
+                <button id="logout-btn" class="text-white hover:text-prime-gold transition-colors">
+                    Sair
+                </button>
+            </a>
+
+        </nav>
+    </header>
+
+    <!-- Dashboard Principal -->
+    <main class="pt-24 px-4 md:px-8">
+        <!-- Cards de Resumo -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <!-- Vendas do Dia -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-lg font-bold text-prime-brown">Vendas do Dia</h3>
+                <p class="text-2xl font-bold text-prime-gold">R$ <span id="vendas-dia">760,00</span></p>
+                <p class="text-sm text-gray-500"><span id="pedidos-dia">0</span> pedidos</p>
+            </div>
+
+            <!-- Vendas da Semana -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-lg font-bold text-prime-brown">Vendas da Semana</h3>
+                <p class="text-2xl font-bold text-prime-gold">R$ <span id="vendas-semana">5.320,00</span></p>
+                <p class="text-sm text-gray-500"><span id="pedidos-semana">0</span> pedidos</p>
+            </div>
+
+            <!-- Vendas do Mês -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-lg font-bold text-prime-brown">Vendas do Mês</h3>
+                <p class="text-2xl font-bold text-prime-gold">R$ <span id="vendas-mes">22.800</span></p>
+                <p class="text-sm text-gray-500"><span id="pedidos-mes">0</span> pedidos</p>
+            </div>
+
+            <!-- Vendas do Ano -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <h3 class="text-lg font-bold text-prime-brown">Vendas do Ano</h3>
+                <p class="text-2xl font-bold text-prime-gold">R$ <span id="vendas-ano">0,00</span></p>
+                <p class="text-sm text-gray-500"><span id="pedidos-ano">0</span> pedidos</p>
+            </div>
+        </div>
+
+        <!-- Adicione esta seção após os cards de resumo e antes do gerenciamento de produtos -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-xl font-bold text-prime-brown mb-4">Registrar Venda Física</h2>
+
+            <form id="venda-fisica-form" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Produto</label>
+                        <select id="venda-produto"
+                            class="w-full p-2 border rounded focus:ring-prime-gold focus:border-prime-gold">
+                            <option value="">Selecione um produto</option>
+                            <!-- Produtos serão carregados via JavaScript -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Quantidade</label>
+                        <input type="number" id="venda-quantidade" min="1" value="1"
+                            class="w-full p-2 border rounded focus:ring-prime-gold focus:border-prime-gold">
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2">
+                    <button type="button" id="adicionar-item"
+                        class="bg-prime-gold text-white px-4 py-2 rounded hover:bg-prime-brown transition-colors">
+                        Adicionar Item
+                    </button>
+                </div>
+
+                <!-- Lista de itens da venda atual -->
+                <div class="mt-4">
+                    <h3 class="text-lg font-bold text-prime-brown mb-2">Itens da Venda</h3>
+                    <div id="itens-venda" class="space-y-2">
+                        <!-- Itens serão inseridos aqui -->
+                    </div>
+
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="text-lg font-bold">Total: R$ <span id="venda-total">0,00</span></span>
+                        <button type="submit"
+                            class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition-colors">
+                            Finalizar Venda
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Gerenciamento de Produtos e Pedidos -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Seção de Produtos -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-prime-brown mb-4">Gerenciar Produtos</h2>
+
+                <!-- Formulário de Adicionar/Editar Produto -->
+                <form id="produto-form" class="space-y-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nome do Produto</label>
+                        <input type="text" id="produto-nome"
+                            class="w-full p-2 border rounded focus:ring-prime-gold focus:border-prime-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Preço (R$)</label>
+                        <input type="number" id="produto-preco" step="0.01"
+                            class="w-full p-2 border rounded focus:ring-prime-gold focus:border-prime-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Categoria</label>
+                        <select id="produto-categoria"
+                            class="w-full p-2 border rounded focus:ring-prime-gold focus:border-prime-gold">
+                            <option value="hamburgueres">Hambúrgueres</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="acompanhamentos">Acompanhamentos</option>
+                            <option value="sobremesas">Sobremesas</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Imagem do Produto</label>
+                        <input type="file" id="produto-imagem" accept="image/*" class="w-full p-2 border rounded">
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-prime-gold text-white py-2 rounded hover:bg-prime-brown transition-colors">
+                        Adicionar Produto
+                    </button>
+                </form>
+
+                <!-- Lista de Produtos -->
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold text-prime-brown mb-3">Produtos Cadastrados</h3>
+                    <div id="lista-produtos" class="space-y-2">
+                        <!-- Produtos serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Pedidos -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h2 class="text-xl font-bold text-prime-brown mb-4">Gerenciar Pedidos</h2>
+
+                <!-- Pedidos em Andamento -->
+                <div class="space-y-4">
+                    <div class="border-b pb-4">
+                        <h3 class="text-lg font-bold text-prime-brown mb-3">Pedidos em Andamento</h3>
+                        <div id="pedidos-andamento" class="space-y-2">
+                            <!-- Pedidos serão inseridos aqui via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Pedidos em Entrega -->
+                    <div class="border-b pb-4">
+                        <h3 class="text-lg font-bold text-prime-brown mb-3">Em Entrega</h3>
+                        <div id="pedidos-entrega" class="space-y-2">
+                            <!-- Pedidos em entrega serão inseridos aqui -->
+                        </div>
+                    </div>
+
+                    <!-- Devoluções -->
+                    <div>
+                        <h3 class="text-lg font-bold text-prime-brown mb-3">Devoluções</h3>
+                        <div id="devolucoes" class="space-y-2">
+                            <!-- Devoluções serão inseridas aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/src/js/script.js"></script>
+</body>
+
+</html>
