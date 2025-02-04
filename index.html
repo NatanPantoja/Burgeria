@@ -78,8 +78,8 @@
                 <a onclick="onToggleMenu(this)" name="menu" class="h-6 w-6 cursor-pointer md:hidden"><img
                         src="/src/img/Icones/icons8-hambúrguer-50.png" alt=""></a>
                 <a href="/index.html" class="logo-link transition-opacity duration-300">
-                    <img class="w-12 mx-auto cursor-pointer rounded-full mt-1 mb-1" src="./src/img/Logo.webp"
-                        alt="Prime Burgeria Logo">
+                    <img class="w-16 h-16 mx-auto cursor-pointer rounded-full mt-1 mb-1"
+                        src="./src/img/logo-removebg-preview.png" alt="Prime Burgeria Logo">
                 </a>
             </div>
 
@@ -87,14 +87,16 @@
                 class="nav-links bg-nav md:static fixed md:min-h-fit min-h-screen left-[-100%] top-0 w-[70%] md:w-auto flex items-center px-5 transition-all duration-300 ease-in-out md:translate-x-0 shadow-2xl md:shadow-none">
                 <!-- Cabeçalho do menu mobile com logo e botão fechar -->
                 <div class="absolute top-4 left-4 right-4 flex justify-between items-center md:hidden">
-                    <img class="w-12 rounded-full" src="./src/img/Logo.webp" alt="Prime Burgeria Logo">
+                    <img class="w-16 h-16 rounded-full" src="./src/img/logo-removebg-preview.png"
+                        alt="Prime Burgeria Logo">
                     <a onclick="onToggleMenu(this)" name="close" class="h-6 w-6 cursor-pointer text-white"><img
-                            src="/src/img/Icones/icons8-x-50 (1).png" class="h-6 w-6" alt=""></a>
+                            src="/src/img/Icones/icons8-x-50 (1).png" alt=""></a>
 
                 </div>
 
                 <div class="flex flex-col w-full">
-                    <ul class="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-4 w-full md:mt-0 mt-16">
+                    <ul
+                        class="flex md:flex-row flex-col md:items-center md:gap-[2vw] lg:gap-6 gap-4 w-full md:mt-0 mt-16">
                         <li>
                             <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
                                 href="/index.html">
@@ -141,7 +143,8 @@
                         </a>
 
                         <button class="flex items-center gap-2 text-prime-laranja" id="cart-btn-mobile">
-                            <img src="/src/img/Icones/carrinho.png" class="w-8 h-8" alt="carrinho">
+                            <img src="/src/img/Icones/icons8-carrinho-de-compras-100.png" class="w-8 h-8"
+                                alt="carrinho">
                             <span class="text-xl text-white">Carrinho</span>
                             <span id="cart-count-mobile" class=" text-white px-2 py-1 rounded-full text-sm">0</span>
                         </button>
@@ -156,81 +159,75 @@
                         <img src="/src/img/Icones/icons8-pessoa-32.png" alt="LOGIN">
                     </button>
                 </a>
-                <button class="flex items-center gap-2 text-black font-bold" id="cart-btn">
+                <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
                     <span id="cart-count">0</span>
-                    <img src="/src/img/Icones/carrinho.png" class="w-10 h-10" alt="carrinho">
+                    <img src="/src/img/Icones/icons8-carrinho-de-compras-100.png" class="w-10 h-10" alt="carrinho">
                 </button>
             </div>
         </nav>
     </header>
 
-    <!-- Após o header -->
-    <section class=" py-8 pt-24">
+
+    <main class=" py-8 pt-24">
         <!-- Promoções da Semana -->
-        <div class="max-w-7xl mx-auto px-4">
+        <section class="max-w-7xl mx-auto px-4">
             <div class="mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-prime-brown">
                     PROMOÇÕES DA <span class="text-prime-gold">SEMANA</span>
                 </h2>
 
-                <div class="grid grid-cols-1 justify-center">
+                <div class="flex flex-wrap gap-3 justify-center md:flex-wrap md:justify-between ">
                     <!-- Segunda -->
-                    <div id="promo-segunda" class="bg-white rounded-lg shadow-lg p-4 hidden mx-auto max-w-md">
-                        <img src="./src/img/promocoes/segunda.webp" alt="Promoção de Segunda"
+                    <article class="bg-white rounded-lg shadow-lg p-4  mx-auto max-w-md">
+                        <img src="./src/img/promoção/Compra 1 (1).png" alt="Promoção de Segunda"
                             class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
+                        <div class="p-4 text-center">
                             <h3 class="font-bold text-lg">Segunda-feira</h3>
                             <p class="text-prime-gold font-bold">Compre 1 Leve 2</p>
                             <p class="text-gray-600">Em todos os hambúrgueres clássicos</p>
-                            <button
-                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors"
+                            <button id="promo-segunda"
+                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors hidden"
                                 data-name="Promoção Segunda - Compre 1 Leve 2" data-price="18.90">
                                 Adicionar ao Carrinho
                             </button>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Quarta -->
-                    <div id="promo-quarta" class="bg-white rounded-lg shadow-lg p-4 hidden mx-auto max-w-md">
+                    <article class="bg-white rounded-lg shadow-lg p-4 mx-auto max-w-md">
                         <img src="./src/img/promocoes/quarta.webp" alt="Promoção de Quarta"
                             class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
+                        <div class="p-4 text-center">
                             <h3 class="font-bold text-lg">Quarta-feira</h3>
                             <p class="text-prime-gold font-bold">Combo Família</p>
                             <p class="text-gray-600">4 hambúrgueres + 4 bebidas por R$89,90</p>
-                            <button
-                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors"
+                            <button id="promo-quarta"
+                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors hidden"
                                 data-name="Combo Família - 4 Hambúrgueres + 4 Bebidas" data-price="89.90">
                                 Adicionar ao Carrinho
                             </button>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- Sexta -->
-                    <div id="promo-sexta" class="bg-white rounded-lg shadow-lg p-4 hidden mx-auto max-w-md">
+                    <article class="bg-white rounded-lg shadow-lg p-4 mx-auto max-w-md">
                         <img src="./src/img/promocoes/sexta.webp" alt="Promoção de Sexta"
                             class="w-full h-48 object-cover rounded-t-lg">
-                        <div class="p-4">
+                        <div class="p-4 text-center">
                             <h3 class="font-bold text-lg">Sexta-feira</h3>
                             <p class="text-prime-gold font-bold">Happy Hour</p>
                             <p class="text-gray-600">15% OFF em todos os combos</p>
-                            <button
-                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors"
+                            <button id="promo-sexta"
+                                class="bg-prime-gold text-white px-4 py-2 rounded mt-4 w-full add-to-cart-btn hover:bg-prime-brown transition-colors hidden"
                                 data-name="Happy Hour - 15% OFF Combos" data-price="25.90">
                                 Adicionar ao Carrinho
                             </button>
                         </div>
-                    </div>
-
-                    <!-- Mensagem para dias sem promoção -->
-                    <div id="sem-promo" class="hidden text-center py-8">
-                        <h3 class="text-xl font-bold text-gray-600">Não há promoções hoje</h3>
-                        <p class="text-gray-500 mt-2">Confira nossas promoções às segundas, quartas e sextas-feiras!</p>
-                    </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!--INICIO CARD-->
     <section class="w-full h-[420px] bg-home relativo flex flex-col justify-center items-center">

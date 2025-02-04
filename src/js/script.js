@@ -1,5 +1,7 @@
+
 const menu = document.getElementById("menu");
 const cartBtn = document.getElementById("cart-btn");
+const cartBtnMobile = document.getElementById("cart-btn-mobile");
 const cartModal = document.getElementById("cart-modal");
 const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
@@ -13,7 +15,7 @@ const addressSection = document.getElementById("address-section");
 
 let cart = [];
 
-//Adicione esta função no início do arquivo, junto com as outras constantes
+// Função para verificar promoções do dia
 function checkPromoDay() {
     const hoje = new Date().getDay();
 
@@ -43,13 +45,20 @@ function checkPromoDay() {
     }
 }
 
-
-//Abrir o modal do carrinho 
-cartBtn.addEventListener("click", function () {
+// Função para abrir o modal do carrinho
+function openCartModal() {
     updataCartModal();
     cartModal.classList.remove("hidden");
     cartModal.style.display = "flex";
-});
+}
+
+// Evento de clique para abrir o modal (desktop e mobile)
+if (cartBtn) {
+    cartBtn.addEventListener("click", openCartModal);
+}
+if (cartBtnMobile) {
+    cartBtnMobile.addEventListener("click", openCartModal);
+}
 
 // Fechar o modal quando clicar fora
 cartModal.addEventListener("click", function (event) {
@@ -58,13 +67,16 @@ cartModal.addEventListener("click", function (event) {
     }
 });
 
-closeModalBtn.addEventListener("click", function () {
-    cartModal.style.display = "none";
-});
+// Fechar o modal com o botão de fechar
+if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", function () {
+        cartModal.style.display = "none";
+    });
+}
 
 // Adicionar ao carrinho
 function setupCartButtons() {
-    const buttons = document.querySelectorAll('.add-to-cart-btn');
+    const buttons = document.querySelectorAll('.add-to-cart-btn'); // Use uma classe comum para os botões
 
     buttons.forEach(button => {
         button.addEventListener('click', function (e) {
@@ -110,6 +122,7 @@ function addToCart(name, price) {
     }).showToast();
 }
 
+// Atualizar o modal do carrinho
 function updataCartModal() {
     if (!cartItemsContainer) return;
 
@@ -169,6 +182,7 @@ function updataCartModal() {
     }
 }
 
+// Atualizar o contador do carrinho
 function updateCartCounter() {
     const count = cart.reduce((total, item) => total + item.quantity, 0);
     const cartCounter = document.getElementById('cart-count');
@@ -215,14 +229,14 @@ if (cartItemsContainer) {
     });
 }
 
-// Adicione um evento para monitorar mudanças no campo de endereço
+// Adicionar evento para monitorar mudanças no campo de endereço
 if (addressInput) {
     addressInput.addEventListener('input', function () {
         updataCartModal();
     });
 }
 
-// Modifique a função setupPickupOption
+// Configurar a opção de retirada no local
 function setupPickupOption() {
     if (pickupOption && addressSection) {
         pickupOption.addEventListener('change', function () {
@@ -246,7 +260,7 @@ function setupPickupOption() {
     }
 }
 
-// Função para verificar horário de funcionamento
+// Verificar horário de funcionamento
 function checkRestaurantOpen() {
     const data = new Date();
     const hora = data.getHours();
@@ -262,7 +276,7 @@ function checkRestaurantOpen() {
         (hora < horaFechamento || (hora === horaFechamento && minutos < minutoFechamento));
 }
 
-// Função para atualizar visual do horário
+// Atualizar visual do horário
 function updateRestaurantStatus() {
     const spanItem = document.getElementById("date-span");
     if (spanItem) {
@@ -277,7 +291,7 @@ function updateRestaurantStatus() {
     }
 }
 
-// Modifica o evento de checkout
+// Evento de checkout
 if (checkoutBtn) {
     checkoutBtn.addEventListener("click", function (e) {
         if (!checkRestaurantOpen()) {
@@ -382,7 +396,7 @@ function setupSearch() {
     });
 }
 
-// Modifique a função de inicialização
+// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
     loadCart();
     setupCartButtons();
