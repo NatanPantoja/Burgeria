@@ -1,4 +1,3 @@
-
 const menu = document.getElementById("menu");
 const cartBtn = document.getElementById("cart-btn");
 const cartBtnMobile = document.getElementById("cart-btn-mobile");
@@ -55,6 +54,7 @@ function openCartModal() {
 // Evento de clique para abrir o modal (desktop e mobile)
 if (cartBtn) {
     cartBtn.addEventListener("click", openCartModal);
+
 }
 if (cartBtnMobile) {
     cartBtnMobile.addEventListener("click", openCartModal);
@@ -213,6 +213,7 @@ if (cartItemsContainer) {
                 item.quantity += 1;
                 localStorage.setItem("cart", JSON.stringify(cart));
                 updataCartModal();
+                updateCartCounter(); // Atualiza o contador do carrinho
             }
         }
 
@@ -221,10 +222,11 @@ if (cartItemsContainer) {
             if (item && item.quantity > 1) {
                 item.quantity -= 1;
             } else if (item && item.quantity === 1) {
-                cart = cart.filter(i => i.name !== name);
+                cart = cart.filter(i => i.name !== name); // Remove o produto do carrinho
             }
             localStorage.setItem("cart", JSON.stringify(cart));
             updataCartModal();
+            updateCartCounter(); // Atualiza o contador quando e removido do carrinho
         }
     });
 }

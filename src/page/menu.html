@@ -83,13 +83,16 @@
                 class="nav-links bg-nav md:static fixed md:min-h-fit min-h-screen left-[-100%] top-0 w-[70%] md:w-auto flex items-center px-5 transition-all duration-300 ease-in-out md:translate-x-0 shadow-2xl md:shadow-none">
                 <!-- Cabeçalho do menu mobile com logo e botão fechar -->
                 <div class="absolute top-4 left-4 right-4 flex justify-between items-center md:hidden">
-                    <img class="w-16 h-16 rounded-full" src="/src/img/Logo.webp" alt="Prime Burgeria Logo">
+                    <img class="w-16 h-16 rounded-full" src="/src/img/logo-removebg-preview.png"
+                        alt="Prime Burgeria Logo">
                     <a onclick="onToggleMenu(this)" name="close" class="h-6 w-6 cursor-pointer text-white"><img
                             src="/src/img/Icones/icons8-x-50 (1).png" alt=""></a>
+
                 </div>
 
                 <div class="flex flex-col w-full">
-                    <ul class="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-4 w-full md:mt-0 mt-16">
+                    <ul
+                        class="flex md:flex-row flex-col md:items-center md:gap-[2vw] lg:gap-6 gap-4 w-full md:mt-0 mt-16">
                         <li>
                             <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
                                 href="/index.html">
@@ -99,18 +102,19 @@
                         </li>
                         <li>
                             <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
-                                href="#Hambúrguer">
-                                <img src="/src/img/Icones/icons8-hambúrguer-64.png" alt="hambúrguer" class="w-6 h-6">
+                                href="/src/page/menu.html">
+                                <img src="/src/img/Icones/icons8-hambúrguer-64.png" alt="Menu" class="w-6 h-6">
                                 Hambúrgueres
                             </a>
                         </li>
                         <li>
                             <a class="text-2xl text-white hover:text-prime-gold transition-colors duration-300 flex items-center gap-2"
-                                href="#Bebidas">
-                                <img src="/src/img/Icones/icons8-drink-64.png" alt="refrigerante" class="w-6 h-6">
+                                href="#sobre-nos">
+                                <img src="/src/img/Icones/icons8-drink-64.png" alt="Sobre Nós" class="w-6 h-6">
                                 Bebidas
                             </a>
                         </li>
+
 
                     </ul>
 
@@ -121,7 +125,7 @@
                             <span class="text-xl text-white">Login</span>
                         </a>
 
-                        <button class="flex items-center gap-2 text-prime-laranja" id="cart-btn">
+                        <button class="flex items-center gap-2 text-prime-laranja" id="cart-btn-mobile">
                             <img src="/src/img/Icones/icons8-carrinho-de-compras-100.png" class="w-8 h-8"
                                 alt="carrinho">
                             <span class="text-xl text-white">Carrinho</span>
@@ -135,7 +139,7 @@
             <div class="hidden md:flex items-center gap-6">
                 <a href="/src/page/login.html">
                     <button class="flex items-end gap-2 text-black font-bold">
-                        <img src="/src/img/Icones/icons8-pessoa-32.png" class="w-6 h-6" alt="login">
+                        <img src="/src/img/Icones/icons8-pessoa-32.png" alt="LOGIN">
                     </button>
                 </a>
                 <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
@@ -145,6 +149,7 @@
             </div>
         </nav>
     </header>
+
 
     <section class="pt-24">
         <!-- Sistema de Busca -->
