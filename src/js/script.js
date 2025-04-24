@@ -192,7 +192,7 @@ function updateCartCounter() {
     if (mobileCartCounter) mobileCartCounter.textContent = count;
 }
 
-// Carregar carrinho do localStorage
+// Carregar carrinho do localStorage - isso permite que se mudar de pagina não vai perde o que foi colocado .
 function loadCart() {
     const savedCart = localStorage.getItem("cart");
     if (savedCart) {
